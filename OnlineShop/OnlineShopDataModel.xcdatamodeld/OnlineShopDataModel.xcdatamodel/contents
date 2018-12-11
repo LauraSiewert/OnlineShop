@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Articel" representedClassName=".Articel" syncable="YES">
+        <attribute name="articelAmount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="articelColor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="articelDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="articelImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="articelName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="articelPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="articelSize" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="inCart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ShoppingCart" inverseName="articelsInCart" inverseEntity="ShoppingCart" syncable="YES"/>
+        <relationship name="subCategory" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SubCategory" inverseName="articels" inverseEntity="SubCategory" syncable="YES"/>
+    </entity>
+    <entity name="MainCategory" representedClassName=".MainCategory" syncable="YES">
+        <attribute name="mainCategoryImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mainCategoryName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="subCategories" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SubCategory" inverseName="mainCategory" inverseEntity="SubCategory" syncable="YES"/>
+    </entity>
+    <entity name="ShoppingCart" representedClassName=".ShoppingCart" syncable="YES">
+        <attribute name="inCart" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="articelsInCart" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Articel" inverseName="inCart" inverseEntity="Articel" syncable="YES"/>
+    </entity>
+    <entity name="SubCategory" representedClassName=".SubCategory" syncable="YES">
+        <attribute name="subCategoryImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subCategoryName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="articels" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Articel" inverseName="subCategory" inverseEntity="Articel" syncable="YES"/>
+        <relationship name="mainCategory" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="MainCategory" inverseName="subCategories" inverseEntity="MainCategory" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Articel" positionX="169.953125" positionY="155.00390625" width="128" height="178"/>
+        <element name="MainCategory" positionX="161.1484375" positionY="-200.94921875" width="128" height="88"/>
+        <element name="SubCategory" positionX="163.52734375" positionY="-36.90234375" width="128" height="103"/>
+        <element name="ShoppingCart" positionX="-161.93359375" positionY="216.75390625" width="128" height="73"/>
+    </elements>
+</model>
