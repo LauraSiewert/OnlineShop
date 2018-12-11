@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D336077B21C017AA0032EFA3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D336077A21C017AA0032EFA3 /* CoreDataStack.swift */; };
 		D3439E6A21BA95A0007759F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3439E6921BA95A0007759F5 /* AppDelegate.swift */; };
 		D3439E6C21BA95A0007759F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3439E6B21BA95A0007759F5 /* ViewController.swift */; };
 		D3439E6F21BA95A0007759F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3439E6D21BA95A0007759F5 /* Main.storyboard */; };
 		D3439E7121BA95A1007759F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3439E7021BA95A1007759F5 /* Assets.xcassets */; };
 		D3439E7421BA95A1007759F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3439E7221BA95A1007759F5 /* LaunchScreen.storyboard */; };
 		D3439E7D21BA95BB007759F5 /* OnlineShopDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3439E7B21BA95BB007759F5 /* OnlineShopDataModel.xcdatamodeld */; };
-		D3439E7F21BA95F4007759F5 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3439E7E21BA95F4007759F5 /* CoreDataStack.swift */; };
 		D3439E8821BA9834007759F5 /* Articel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3439E8021BA9834007759F5 /* Articel+CoreDataClass.swift */; };
 		D3439E8921BA9834007759F5 /* Articel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3439E8121BA9834007759F5 /* Articel+CoreDataProperties.swift */; };
 		D3439E8A21BA9834007759F5 /* SubCategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3439E8221BA9834007759F5 /* SubCategory+CoreDataClass.swift */; };
@@ -26,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D336077A21C017AA0032EFA3 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		D3439E6621BA95A0007759F5 /* OnlineShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlineShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3439E6921BA95A0007759F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3439E6B21BA95A0007759F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -34,7 +35,6 @@
 		D3439E7321BA95A1007759F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3439E7521BA95A1007759F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3439E7C21BA95BB007759F5 /* OnlineShopDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OnlineShopDataModel.xcdatamodel; sourceTree = "<group>"; };
-		D3439E7E21BA95F4007759F5 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = "../../Uni/5. Semester/MOBU/Wireframes/swift4-ios-tutorials-master/57_CoreDataAddEditDelete/57_CoreDataAddEditDelete_Finished/Delegates/CoreDataStack.swift"; sourceTree = "<group>"; };
 		D3439E8021BA9834007759F5 /* Articel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Articel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D3439E8121BA9834007759F5 /* Articel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Articel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D3439E8221BA9834007759F5 /* SubCategory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubCategory+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -90,7 +90,7 @@
 				D3439E9021BAA31D007759F5 /* MainCategoriesTableViewCell.swift */,
 				D3439E7021BA95A1007759F5 /* Assets.xcassets */,
 				D3439E7221BA95A1007759F5 /* LaunchScreen.storyboard */,
-				D3439E7E21BA95F4007759F5 /* CoreDataStack.swift */,
+				D336077A21C017AA0032EFA3 /* CoreDataStack.swift */,
 				D3439E7521BA95A1007759F5 /* Info.plist */,
 				D3439E7B21BA95BB007759F5 /* OnlineShopDataModel.xcdatamodeld */,
 			);
@@ -175,12 +175,12 @@
 				D3439E9121BAA31D007759F5 /* MainCategoriesTableViewCell.swift in Sources */,
 				D3439E9D21BAA866007759F5 /* MainCategory+CoreDataClass.swift in Sources */,
 				D3439E8C21BA9834007759F5 /* ShoppingCart+CoreDataClass.swift in Sources */,
+				D336077B21C017AA0032EFA3 /* CoreDataStack.swift in Sources */,
 				D3439E8B21BA9834007759F5 /* SubCategory+CoreDataProperties.swift in Sources */,
 				D3439E8821BA9834007759F5 /* Articel+CoreDataClass.swift in Sources */,
 				D3439E6C21BA95A0007759F5 /* ViewController.swift in Sources */,
 				D3439E6A21BA95A0007759F5 /* AppDelegate.swift in Sources */,
 				D3439E7D21BA95BB007759F5 /* OnlineShopDataModel.xcdatamodeld in Sources */,
-				D3439E7F21BA95F4007759F5 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

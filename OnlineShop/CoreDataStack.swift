@@ -11,7 +11,7 @@ import CoreData
 
 class CoreDataStack {
     lazy var managedObjectModel: NSManagedObjectModel = {
-        let modelUrl = Bundle.main.url(forResource: "FriendsDataModel", withExtension: "momd")!
+        let modelUrl = Bundle.main.url(forResource: "OnlineShopDataModel", withExtension: "momd")!
         return NSManagedObjectModel(contentsOf: modelUrl)!
     }()
     
@@ -19,7 +19,7 @@ class CoreDataStack {
     lazy var peristentStoreCoordinator: NSPersistentStoreCoordinator = {
         let coordinator: NSPersistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let applicationDocumentsDirectory: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
-        let persistentStoreUrl: URL = applicationDocumentsDirectory.appendingPathComponent("FriendsObjectModel.sqlite")
+        let persistentStoreUrl: URL = applicationDocumentsDirectory.appendingPathComponent("OnlineShopDataModel.sqlite")
         
         do {
             try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: persistentStoreUrl, options: nil)
