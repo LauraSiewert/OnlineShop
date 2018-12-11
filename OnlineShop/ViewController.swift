@@ -14,28 +14,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var mainCategories : [MainCategory] = [] //Array für MainCategories
     var subCategories: [SubCategory] = [] // Array für SubCategories
     var appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+      var childManagedObjectContext: NSManagedObjectContext?
     
-    @IBOutlet var myTableView: UITableView!
+    @IBOutlet weak var myTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.childManagedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        self.childManagedObjectContext?.parent = self.appDelegate.coreDataStack.managedObjectContext
         let firstStart: Bool? = UserDefaults.standard.object(forKey: "firstStart") as? Bool
         
         if firstStart == nil {
             self.createDemoData()
             UserDefaults.standard.set(false, forKey: "firstStart")
         }
-        
         self.fetchMainCategory()
+        myTableView.separatorStyle = .none
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        // get the data form core data
-//        getData()
-//        // reload tableview
-//        myTableView.reloadData()
-//
-//    }
     
     //Hauptkategorien erstellen
     func createDemoData(){
@@ -49,13 +45,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             mainCategory1.mainCategoryImage = #imageLiteral(resourceName: "becher-blume-brauen-1050294").toString()
             
             let mainCategory2: MainCategory =
-                MainCategory(entity: mainCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
+            MainCategory(entity: mainCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
             mainCategory2.mainCategoryName = "Kleidung"
             mainCategory2.mainCategoryImage = #imageLiteral(resourceName: "mainCategory2").toString()
-            //mainCategory2.mainCategoryImage = "mainCategory1"
             
             self.appDelegate.coreDataStack.saveContext()
-
         }
     }
     
