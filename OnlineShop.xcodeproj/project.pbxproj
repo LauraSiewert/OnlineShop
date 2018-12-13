@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B61E55D721C26BCA009D2D63 /* ViewControllerSelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61E55D621C26BCA009D2D63 /* ViewControllerSelf.swift */; };
+		B61E55DB21C27FC7009D2D63 /* Stea Font.otf in Resources */ = {isa = PBXBuildFile; fileRef = B61E55DA21C27FC7009D2D63 /* Stea Font.otf */; };
 		D336077B21C017AA0032EFA3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D336077A21C017AA0032EFA3 /* CoreDataStack.swift */; };
 		D3439E6A21BA95A0007759F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3439E6921BA95A0007759F5 /* AppDelegate.swift */; };
 		D3439E6C21BA95A0007759F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3439E6B21BA95A0007759F5 /* ViewController.swift */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B61E55D621C26BCA009D2D63 /* ViewControllerSelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSelf.swift; sourceTree = "<group>"; };
+		B61E55DA21C27FC7009D2D63 /* Stea Font.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stea Font.otf"; sourceTree = "<group>"; };
 		D336077A21C017AA0032EFA3 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		D3439E6621BA95A0007759F5 /* OnlineShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlineShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3439E6921BA95A0007759F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +97,8 @@
 				D336077A21C017AA0032EFA3 /* CoreDataStack.swift */,
 				D3439E7521BA95A1007759F5 /* Info.plist */,
 				D3439E7B21BA95BB007759F5 /* OnlineShopDataModel.xcdatamodeld */,
+				B61E55D621C26BCA009D2D63 /* ViewControllerSelf.swift */,
+				B61E55DA21C27FC7009D2D63 /* Stea Font.otf */,
 			);
 			path = OnlineShop;
 			sourceTree = "<group>";
@@ -155,6 +161,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B61E55DB21C27FC7009D2D63 /* Stea Font.otf in Resources */,
 				D3439E7421BA95A1007759F5 /* LaunchScreen.storyboard in Resources */,
 				D3439E7121BA95A1007759F5 /* Assets.xcassets in Resources */,
 				D3439E6F21BA95A0007759F5 /* Main.storyboard in Resources */,
@@ -174,6 +181,7 @@
 				D3439E8921BA9834007759F5 /* Articel+CoreDataProperties.swift in Sources */,
 				D3439E9121BAA31D007759F5 /* MainCategoriesTableViewCell.swift in Sources */,
 				D3439E9D21BAA866007759F5 /* MainCategory+CoreDataClass.swift in Sources */,
+				B61E55D721C26BCA009D2D63 /* ViewControllerSelf.swift in Sources */,
 				D3439E8C21BA9834007759F5 /* ShoppingCart+CoreDataClass.swift in Sources */,
 				D336077B21C017AA0032EFA3 /* CoreDataStack.swift in Sources */,
 				D3439E8B21BA9834007759F5 /* SubCategory+CoreDataProperties.swift in Sources */,
@@ -326,15 +334,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VHSPQ2VYQK;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = OnlineShop/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.OnlineShop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.OnlineShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -344,15 +355,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VHSPQ2VYQK;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = OnlineShop/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.OnlineShop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.OnlineShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

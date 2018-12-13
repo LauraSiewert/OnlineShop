@@ -14,7 +14,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var mainCategories : [MainCategory] = [] //Array für MainCategories
     var subCategories: [SubCategory] = [] // Array für SubCategories
     var appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-      var childManagedObjectContext: NSManagedObjectContext?
+    var childManagedObjectContext: NSManagedObjectContext?
     
     @IBOutlet weak var myTableView: UITableView!
     
@@ -30,6 +30,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         self.fetchMainCategory()
         myTableView.separatorStyle = .none
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Stea", size: 20)!]
     }
     
     

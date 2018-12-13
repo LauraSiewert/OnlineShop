@@ -14,7 +14,6 @@ protocol MainCategoryDelegate {
 
 class MainCategoriesTableViewCell: UITableViewCell {
 
-
     @IBOutlet weak var mainCategoryImage: UIImageView!
     @IBOutlet weak var mainCategoryName: UILabel!
     var delegate: MainCategoryDelegate?
