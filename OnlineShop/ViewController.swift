@@ -12,7 +12,8 @@ import CoreData
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     var mainCategories : [MainCategory] = [] //Array für MainCategories
-    var subCategories: [SubCategory] = [] // Array für SubCategories
+    var news : [News] = [] // Array für Neuheiten
+   
     var appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     var childManagedObjectContext: NSManagedObjectContext?
     
@@ -25,38 +26,61 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let firstStart: Bool? = UserDefaults.standard.object(forKey: "firstStart") as? Bool
         
         if firstStart == nil {
-            self.createDemoData()
+            self.createMainCategories()
             UserDefaults.standard.set(false, forKey: "firstStart")
         }
+        news = createNews()
         self.fetchMainCategory()
+        
+        //keine Trennlinien in der TableView
         myTableView.separatorStyle = .none
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Stea", size: 20)!]
     }
     
     
-    //Hauptkategorien erstellen
-    func createDemoData(){
+    //MARK: Hauptkategorien erstellen
+    func createMainCategories(){
         let mainCategoryEntity: NSEntityDescription? = NSEntityDescription.entity(forEntityName: "MainCategory", in: self.appDelegate.coreDataStack.managedObjectContext)
 //        let subCategoryEntity: NSEntityDescription? = NSEntityDescription.entity(forEntityName: "SubCategory", in: self.appDelegate.coreDataStack.managedObjectContext)
         
         if mainCategoryEntity != nil {
-            let mainCategory1: MainCategory =
-            MainCategory(entity: mainCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
-            mainCategory1.mainCategoryName = "Neuheiten"
-            mainCategory1.mainCategoryImage = #imageLiteral(resourceName: "becher-blume-brauen-1050294").toString()
-            
             let mainCategory2: MainCategory =
             MainCategory(entity: mainCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
-            mainCategory2.mainCategoryName = "Kleidung"
+            mainCategory2.mainCategoryName = "KLEIDUNG"
             mainCategory2.mainCategoryImage = #imageLiteral(resourceName: "mainCategory2").toString()
+            
+            let mainCategory3: MainCategory =
+                MainCategory(entity: mainCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
+            mainCategory3.mainCategoryName = "BETTWARE"
+            mainCategory3.mainCategoryImage = #imageLiteral(resourceName: "bett-design-drinnen-1329711").toString()
+            
+            let mainCategory4: MainCategory =
+                MainCategory(entity: mainCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
+            mainCategory4.mainCategoryName = "SCHLAFHILFEN"
+            mainCategory4.mainCategoryImage = #imageLiteral(resourceName: "mainCategory1").toString()
+            
+            let mainCategory5: MainCategory =
+                MainCategory(entity: mainCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
+            mainCategory5.mainCategoryName = "SCHLAFMASKEN"
+            mainCategory5.mainCategoryImage = #imageLiteral(resourceName: "mainCategory1").toString()
             
             self.appDelegate.coreDataStack.saveContext()
         }
     }
     
+    //MARK: Inhalt für Zelle Neuheiten erzeugen
+    func createNews()-> [News]{
+        var tempNews : [News] = []
+        let news1 = News(newsImage: #imageLiteral(resourceName: "becher-blume-brauen-1050294"), newsLabel: "NEUHEITEN")
+
+        tempNews.append(news1)
+        
+        return tempNews
+    }
     
-    //Hol die Daten
+    
+    //MARK: Hol die Daten für die MainCategories
     func fetchMainCategory() {
         let fetchRequest: NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MainCategory")
        // fetchRequest.predicate = NSPredicate(format: "mainCategory.subCategories==false") ist wie eine SELECT Abfrage
@@ -73,30 +97,82 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    //TableView und Zellen erstellen
+    //MARK: TableView und Zellen erstellen
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.mainCategories.count
+        return self.mainCategories.count + news.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.rowHeight = 220
-        var cell : MainCategoriesTableViewCell? = tableView.dequeueReusableCell(withIdentifier: "mainCell") as? MainCategoriesTableViewCell
+        // NeuheitenZelle
+        if (indexPath.row==0){
+            myTableView.rowHeight = 220
+            let new = news[indexPath.row]
+            let cell : NewsTableViewCell? = tableView.dequeueReusableCell(withIdentifier: "news", for: indexPath) as? NewsTableViewCell
+            cell!.setNews(preview: new)
+            cell!.selectionStyle = .none
+            return cell!
+        }
+        //Leere Zelle als Teiler
+        else if (indexPath.row==1){
+            myTableView.rowHeight = 15
+            let cell = tableView.dequeueReusableCell(withIdentifier: "space", for: indexPath)
+            cell.selectionStyle = .none
+            return cell
+        }
+        //Hautpkategorien Zelle
+        else{
+            myTableView.rowHeight = 200
+            let mainCategory = mainCategories[indexPath.row-2]
+            let cell : MainCategoriesTableViewCell? = tableView.dequeueReusableCell(withIdentifier: "mainCategory", for: indexPath) as? MainCategoriesTableViewCell
+            cell!.setMainCategory(preview: mainCategory)
+            cell!.selectionStyle = .none
+            return cell!
+        }
+    }
+
+    
+    //MARK: Was passiert, wenn man auf die Kategorien oder Neuheiten klickt
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//         var mainCategoriesSorted = mainCategories.sorted(by: { (this : MainCategory, that : MainCategory) -> Bool in
+//            UIContentSizeCategory(rawValue: this.mainCategoryName!) > UIContentSizeCategory(rawValue: that.mainCategoryName!)
+//        })
         
-        if cell == nil {
-            cell = MainCategoriesTableViewCell(style: .default, reuseIdentifier: "mainCell")
+       // Funktion für SubCategoryView
+        if segue.identifier == "subCategories" {
+            let detailVC: SubCategoryViewController? = segue.destination as? SubCategoryViewController
+            let cell: UITableViewCell? = sender as? UITableViewCell
+            
+            if cell != nil && detailVC != nil {
+                let indexPath: IndexPath? = self.myTableView.indexPath(for: cell!)
+                if indexPath != nil {
+                    let mainCategory: MainCategory = mainCategories[indexPath!.row]
+                    detailVC!.navigationItem.title = mainCategory.mainCategoryName
+                }
+            }
         }
         
-        let mainCategory : MainCategory = mainCategories[indexPath.row]
-        cell!.setMainCategory(preview: mainCategory)
-        cell!.delegate = self as? MainCategoryDelegate
-        cell!.selectionStyle = .none
-        return cell!
-    }
-}
+        
 
-//Cast from Image to String
+}
+        //Funktion für NewsView
+//        if segue.identifier == "news" {
+//            let detailVC: SubCategoryViewController? = segue.destination as? SubCategoryViewController
+//            let cell: MainCategoriesTableViewCell? = sender as? MainCategoriesTableViewCell
+//
+//            if cell != nil && detailVC != nil {
+//                let indexPath: IndexPath? = self.myTableView.indexPath(for: cell!)
+//                if indexPath != nil {
+//                    let mainCategory: MainCategory = mainCategories[indexPath!.section]
+//                    detailVC!.contentText = mainCategory.mainCategoryName
+//                }
+//            }
+//        }
+    }
+
+
+//MARK: Cast from Image to String
 extension UIImage {
     func toString() -> String? {
         let data: Data? = self.pngData()

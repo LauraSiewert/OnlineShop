@@ -25,6 +25,10 @@
 		D3439E9121BAA31D007759F5 /* MainCategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3439E9021BAA31D007759F5 /* MainCategoriesTableViewCell.swift */; };
 		D3439E9B21BAA82A007759F5 /* MainCategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3439E9A21BAA82A007759F5 /* MainCategory+CoreDataProperties.swift */; };
 		D3439E9D21BAA866007759F5 /* MainCategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3439E9C21BAA866007759F5 /* MainCategory+CoreDataClass.swift */; };
+		D351AAD921C565C200B4A786 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = D351AAD821C565C200B4A786 /* News.swift */; };
+		D351AADB21C5669000B4A786 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D351AADA21C5669000B4A786 /* NewsTableViewCell.swift */; };
+		D351AADD21C570BD00B4A786 /* SubCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D351AADC21C570BD00B4A786 /* SubCategoryViewController.swift */; };
+		D351AADF21C5739A00B4A786 /* SubCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D351AADE21C5739A00B4A786 /* SubCategoryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +52,10 @@
 		D3439E9021BAA31D007759F5 /* MainCategoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoriesTableViewCell.swift; sourceTree = "<group>"; };
 		D3439E9A21BAA82A007759F5 /* MainCategory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainCategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D3439E9C21BAA866007759F5 /* MainCategory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainCategory+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D351AAD821C565C200B4A786 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		D351AADA21C5669000B4A786 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		D351AADC21C570BD00B4A786 /* SubCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryViewController.swift; sourceTree = "<group>"; };
+		D351AADE21C5739A00B4A786 /* SubCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +88,7 @@
 		D3439E6821BA95A0007759F5 /* OnlineShop */ = {
 			isa = PBXGroup;
 			children = (
+				D351AAD821C565C200B4A786 /* News.swift */,
 				D3439E9A21BAA82A007759F5 /* MainCategory+CoreDataProperties.swift */,
 				D3439E8021BA9834007759F5 /* Articel+CoreDataClass.swift */,
 				D3439E8121BA9834007759F5 /* Articel+CoreDataProperties.swift */,
@@ -99,6 +108,9 @@
 				D3439E7B21BA95BB007759F5 /* OnlineShopDataModel.xcdatamodeld */,
 				B61E55D621C26BCA009D2D63 /* ViewControllerSelf.swift */,
 				B61E55DA21C27FC7009D2D63 /* Stea Font.otf */,
+				D351AADA21C5669000B4A786 /* NewsTableViewCell.swift */,
+				D351AADC21C570BD00B4A786 /* SubCategoryViewController.swift */,
+				D351AADE21C5739A00B4A786 /* SubCategoryTableViewCell.swift */,
 			);
 			path = OnlineShop;
 			sourceTree = "<group>";
@@ -177,9 +189,13 @@
 			files = (
 				D3439E8A21BA9834007759F5 /* SubCategory+CoreDataClass.swift in Sources */,
 				D3439E8D21BA9834007759F5 /* ShoppingCart+CoreDataProperties.swift in Sources */,
+				D351AADB21C5669000B4A786 /* NewsTableViewCell.swift in Sources */,
 				D3439E9B21BAA82A007759F5 /* MainCategory+CoreDataProperties.swift in Sources */,
+				D351AAD921C565C200B4A786 /* News.swift in Sources */,
 				D3439E8921BA9834007759F5 /* Articel+CoreDataProperties.swift in Sources */,
 				D3439E9121BAA31D007759F5 /* MainCategoriesTableViewCell.swift in Sources */,
+				D351AADD21C570BD00B4A786 /* SubCategoryViewController.swift in Sources */,
+				D351AADF21C5739A00B4A786 /* SubCategoryTableViewCell.swift in Sources */,
 				D3439E9D21BAA866007759F5 /* MainCategory+CoreDataClass.swift in Sources */,
 				B61E55D721C26BCA009D2D63 /* ViewControllerSelf.swift in Sources */,
 				D3439E8C21BA9834007759F5 /* ShoppingCart+CoreDataClass.swift in Sources */,
