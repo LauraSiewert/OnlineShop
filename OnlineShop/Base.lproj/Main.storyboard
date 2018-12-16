@@ -141,10 +141,10 @@
             </objects>
             <point key="canvasLocation" x="2071.875" y="95.070422535211264"/>
         </scene>
-        <!--View Controller-->
+        <!--Articel Overview View Controller-->
         <scene sceneID="BIe-lt-1Yk">
             <objects>
-                <viewController id="8bu-TL-jaf" sceneMemberID="viewController">
+                <viewController id="8bu-TL-jaf" customClass="ArticelOverviewViewController" customModule="OnlineShop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ua9-58-xQl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -159,7 +159,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CLx-GB-cDd">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CLx-GB-cDd" customClass="ArticelOverviewCollectionViewCell" customModule="OnlineShop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">

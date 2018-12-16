@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B61E55D721C26BCA009D2D63 /* ViewControllerSelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61E55D621C26BCA009D2D63 /* ViewControllerSelf.swift */; };
 		B61E55DB21C27FC7009D2D63 /* Stea Font.otf in Resources */ = {isa = PBXBuildFile; fileRef = B61E55DA21C27FC7009D2D63 /* Stea Font.otf */; };
+		D30A865D21C6AB1500037326 /* ArticelOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30A865C21C6AB1500037326 /* ArticelOverviewViewController.swift */; };
+		D30A865F21C6AB4600037326 /* ArticelOverviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30A865E21C6AB4600037326 /* ArticelOverviewCollectionViewCell.swift */; };
 		D336077B21C017AA0032EFA3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D336077A21C017AA0032EFA3 /* CoreDataStack.swift */; };
 		D3439E6A21BA95A0007759F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3439E6921BA95A0007759F5 /* AppDelegate.swift */; };
 		D3439E6C21BA95A0007759F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3439E6B21BA95A0007759F5 /* ViewController.swift */; };
@@ -34,6 +36,8 @@
 /* Begin PBXFileReference section */
 		B61E55D621C26BCA009D2D63 /* ViewControllerSelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSelf.swift; sourceTree = "<group>"; };
 		B61E55DA21C27FC7009D2D63 /* Stea Font.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stea Font.otf"; sourceTree = "<group>"; };
+		D30A865C21C6AB1500037326 /* ArticelOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticelOverviewViewController.swift; sourceTree = "<group>"; };
+		D30A865E21C6AB4600037326 /* ArticelOverviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticelOverviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		D336077A21C017AA0032EFA3 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		D3439E6621BA95A0007759F5 /* OnlineShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlineShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3439E6921BA95A0007759F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 				D351AADA21C5669000B4A786 /* NewsTableViewCell.swift */,
 				D351AADC21C570BD00B4A786 /* SubCategoryViewController.swift */,
 				D351AADE21C5739A00B4A786 /* SubCategoryTableViewCell.swift */,
+				D30A865C21C6AB1500037326 /* ArticelOverviewViewController.swift */,
+				D30A865E21C6AB4600037326 /* ArticelOverviewCollectionViewCell.swift */,
 			);
 			path = OnlineShop;
 			sourceTree = "<group>";
@@ -195,6 +201,8 @@
 				D3439E8921BA9834007759F5 /* Articel+CoreDataProperties.swift in Sources */,
 				D3439E9121BAA31D007759F5 /* MainCategoriesTableViewCell.swift in Sources */,
 				D351AADD21C570BD00B4A786 /* SubCategoryViewController.swift in Sources */,
+				D30A865F21C6AB4600037326 /* ArticelOverviewCollectionViewCell.swift in Sources */,
+				D30A865D21C6AB1500037326 /* ArticelOverviewViewController.swift in Sources */,
 				D351AADF21C5739A00B4A786 /* SubCategoryTableViewCell.swift in Sources */,
 				D3439E9D21BAA866007759F5 /* MainCategory+CoreDataClass.swift in Sources */,
 				B61E55D721C26BCA009D2D63 /* ViewControllerSelf.swift in Sources */,

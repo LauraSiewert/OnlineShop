@@ -9,10 +9,15 @@
 import UIKit
 import CoreData
 
+protocol MainCategoryDelegate {
+    func didChooseMainCategory(subCategory: SubCategory)
+}
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     var mainCategories : [MainCategory] = [] //Array für MainCategories
     var news : [News] = [] // Array für Neuheiten
+    var choosedMainCategoryDelegate : MainCategoryDelegate!
    
     var appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     var childManagedObjectContext: NSManagedObjectContext?
@@ -49,16 +54,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             MainCategory(entity: mainCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
             mainCategory2.mainCategoryName = "KLEIDUNG"
             mainCategory2.mainCategoryImage = #imageLiteral(resourceName: "mainCategory2").toString()
+            mainCategory2.subCategories = ["ONESIE", "KUSCHELSOCKEN", "PYJAMAS"]
             
             let mainCategory3: MainCategory =
                 MainCategory(entity: mainCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
             mainCategory3.mainCategoryName = "BETTWARE"
             mainCategory3.mainCategoryImage = #imageLiteral(resourceName: "bett-design-drinnen-1329711").toString()
+            mainCategory3.subCategories = ["DECKEN", "KISSEN"]
             
             let mainCategory4: MainCategory =
                 MainCategory(entity: mainCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
             mainCategory4.mainCategoryName = "SCHLAFHILFEN"
             mainCategory4.mainCategoryImage = #imageLiteral(resourceName: "mainCategory1").toString()
+            mainCategory3.subCategories = ["TABLETTEN", "CDS", "TEE & KAKAO"]
             
             let mainCategory5: MainCategory =
                 MainCategory(entity: mainCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
@@ -100,7 +108,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //MARK: TableView und Zellen erstellen
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.mainCategories.count + news.count
+        return self.mainCategories.count + news.count+1
     }
     
     
@@ -135,10 +143,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //MARK: Was passiert, wenn man auf die Kategorien oder Neuheiten klickt
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//         var mainCategoriesSorted = mainCategories.sorted(by: { (this : MainCategory, that : MainCategory) -> Bool in
-//            UIContentSizeCategory(rawValue: this.mainCategoryName!) > UIContentSizeCategory(rawValue: that.mainCategoryName!)
-//        })
-        
        // Funktion für SubCategoryView
         if segue.identifier == "subCategories" {
             let detailVC: SubCategoryViewController? = segue.destination as? SubCategoryViewController
@@ -147,29 +151,35 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if cell != nil && detailVC != nil {
                 let indexPath: IndexPath? = self.myTableView.indexPath(for: cell!)
                 if indexPath != nil {
-                    let mainCategory: MainCategory = mainCategories[indexPath!.row]
+                    let mainCategory: MainCategory = mainCategories[indexPath!.row-2]
                     detailVC!.navigationItem.title = mainCategory.mainCategoryName
                 }
             }
+           
         }
         
-        
+       // Funktion für NewsView
+        if segue.identifier == "news" {
+            let detailVC: ArticelOverviewViewController? = segue.destination as? ArticelOverviewViewController
+            let cell: NewsTableViewCell? = sender as? NewsTableViewCell
 
-}
-        //Funktion für NewsView
-//        if segue.identifier == "news" {
-//            let detailVC: SubCategoryViewController? = segue.destination as? SubCategoryViewController
-//            let cell: MainCategoriesTableViewCell? = sender as? MainCategoriesTableViewCell
-//
-//            if cell != nil && detailVC != nil {
-//                let indexPath: IndexPath? = self.myTableView.indexPath(for: cell!)
-//                if indexPath != nil {
-//                    let mainCategory: MainCategory = mainCategories[indexPath!.section]
-//                    detailVC!.contentText = mainCategory.mainCategoryName
-//                }
-//            }
-//        }
+            if cell != nil && detailVC != nil {
+                let indexPath: IndexPath? = self.myTableView.indexPath(for: cell!)
+                if indexPath != nil {
+                    let newsName: News = news[indexPath!.section]
+                    detailVC!.navigationItem.title = newsName.newsLabel
+                }
+            }
+        }
     }
+    
+    
+    
+    
+    
+    
+    
+}
 
 
 //MARK: Cast from Image to String

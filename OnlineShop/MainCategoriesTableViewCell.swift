@@ -8,15 +8,12 @@
 
 import UIKit
 
-protocol MainCategoryDelegate {
-    //func buttonPressed(cell: UITableViewCell)
-}
 
 class MainCategoriesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var mainCategoryImage: UIImageView!
     @IBOutlet weak var mainCategoryName: UILabel!
-    var delegate: MainCategoryDelegate?
+   // var delegate: MainCategoryDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

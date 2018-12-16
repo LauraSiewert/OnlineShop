@@ -31,25 +31,15 @@ class SubCategoryViewController: UIViewController,UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let firstStart: Bool? = UserDefaults.standard.object(forKey: "firstStart") as? Bool
-        
-        var name : String?
-        if firstStart == nil {
-            self.createSubCategories()
-            UserDefaults.standard.set(false, forKey: "firstStart")
-        }
-        
+//        let firstStart: Bool? = UserDefaults.standard.object(forKey: "firstStart") as? Bool
+//
+//        if firstStart == nil {
+//            self.createSubCategories()
+//            UserDefaults.standard.set(false, forKey: "firstStart")
+//        }
+        self.createSubCategories()
         self.fetchSubCategory()
         mySubCategoryTableView.separatorStyle = .none
-        
-//        if self.name != nil {
-//            self.title = name!
-//        }
-//        
-        //Titel der NavigationBar setzten
-//        if contentText != nil {
-//            navigationItem.title = contentText!
-//        }
     }
     
     //MARK: Inhalt für Subcategory erstellen
@@ -120,6 +110,8 @@ class SubCategoryViewController: UIViewController,UITableViewDelegate, UITableVi
                     self.subCategories = fetchedSubCategories!
                 }
             }
+    
+            
         }
         catch {
             fatalError("There was an error fetching the items")
