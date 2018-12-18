@@ -25,8 +25,6 @@ class ArticelOverviewViewController: UIViewController {
     
     func createArticels (){
         let articelEntity: NSEntityDescription? = NSEntityDescription.entity(forEntityName: "Articel", in: self.appDelegate.coreDataStack.managedObjectContext)
-        //        let subCategoryEntity: NSEntityDescription? = NSEntityDescription.entity(forEntityName: "SubCategory", in: self.appDelegate.coreDataStack.managedObjectContext)
-        
         if articelEntity != nil {
             let articel1: Articel =
                 Articel(entity: articelEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
@@ -37,7 +35,6 @@ class ArticelOverviewViewController: UIViewController {
     
     func fetchArticels() {
         let fetchRequest: NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Articel")
-        // fetchRequest.predicate = NSPredicate(format: "mainCategory.subCategories==false") ist wie eine SELECT Abfrage
         do {
             if let results = try self.appDelegate.coreDataStack.managedObjectContext.fetch(fetchRequest) as? [NSManagedObject] {
                 let fetchedArticels: [Articel]? = results as? [Articel]

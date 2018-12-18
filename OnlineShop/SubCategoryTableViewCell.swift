@@ -16,7 +16,6 @@ class SubCategoryTableViewCell: UITableViewCell {
     func setSubCategory(preview: SubCategory){
         subCategoryImage.image = preview.subCategoryImage?.toImage()
         subCategoryLabel.text = preview.subCategoryName
-        
     }
     
     override func awakeFromNib() {

@@ -22,6 +22,7 @@ class SubCategoryViewController: UIViewController,UITableViewDelegate, UITableVi
     var subCategories: [SubCategory] = [] // Array für SubCategories
     var appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    @IBOutlet var mySubCategoryView: UIView!
     var contentText: String? //zum ändern des Titels der NavigationBar
     
     
@@ -88,13 +89,13 @@ class SubCategoryViewController: UIViewController,UITableViewDelegate, UITableVi
                 SubCategory(entity: subCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
             subCategory7.subCategoryName = "DECKEN"
             subCategory7.subCategoryImage = #imageLiteral(resourceName: "mainCategory2").toString()
-            subCategory7.mainCategory?.mainCategoryName = "DECKEN & KISSEN"
+            subCategory7.mainCategory?.mainCategoryName = "BETTWARE"
             
             let subCategory8: SubCategory =
                 SubCategory(entity: subCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
             subCategory8.subCategoryName = "KISSEN"
             subCategory8.subCategoryImage = #imageLiteral(resourceName: "mainCategory2").toString()
-            subCategory5.mainCategory?.mainCategoryName = "DECKEN & KISSEN"
+            subCategory5.mainCategory?.mainCategoryName = "BETTWARE"
             
             self.appDelegate.coreDataStack.saveContext()
         }
@@ -103,6 +104,7 @@ class SubCategoryViewController: UIViewController,UITableViewDelegate, UITableVi
     //MARK: Hol die Daten für die SubCategories
     func fetchSubCategory() {
         let fetchRequest: NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SubCategory")
+//        fetchRequest.predicate = NSPredicate(format: "mainCategory.mainCategoryName like 'SCHLAFHILFEN' ")
         do {
             if let results = try self.appDelegate.coreDataStack.managedObjectContext.fetch(fetchRequest) as? [NSManagedObject] {
                 let fetchedSubCategories: [SubCategory]? = results as? [SubCategory]
@@ -126,12 +128,14 @@ class SubCategoryViewController: UIViewController,UITableViewDelegate, UITableVi
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            mySubCategoryTableView.rowHeight = 200
+        mySubCategoryTableView.rowHeight = 200
+        let cell : SubCategoryTableViewCell? = tableView.dequeueReusableCell(withIdentifier: "subCategory", for: indexPath) as? SubCategoryTableViewCell
+        if subCategories[indexPath.row].mainCategory?.mainCategoryName?.uppercased() == navigationItem.title?.uppercased() {
             let subCategory = subCategories[indexPath.row]
-            let cell : SubCategoryTableViewCell? = tableView.dequeueReusableCell(withIdentifier: "subCategory", for: indexPath) as? SubCategoryTableViewCell
             cell!.setSubCategory(preview: subCategory)
-            cell!.selectionStyle = .none
-            return cell!
+        }
+        cell!.selectionStyle = .none
+        return cell!
     }
 }
 

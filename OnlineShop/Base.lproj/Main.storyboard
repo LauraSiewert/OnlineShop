@@ -168,6 +168,10 @@
                                         </view>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="8bu-TL-jaf" id="b8X-4X-R8O"/>
+                                    <outlet property="delegate" destination="8bu-TL-jaf" id="wOH-ZA-NKh"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -245,6 +249,7 @@
                     </view>
                     <connections>
                         <outlet property="mySubCategoryTableView" destination="DBZ-t3-jgd" id="oYf-YH-4gy"/>
+                        <outlet property="mySubCategoryView" destination="UAS-J7-bEL" id="ZLI-ve-qcY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbD-ki-pTj" userLabel="First Responder" sceneMemberID="firstResponder"/>

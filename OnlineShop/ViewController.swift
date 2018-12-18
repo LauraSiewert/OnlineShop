@@ -9,15 +9,11 @@
 import UIKit
 import CoreData
 
-protocol MainCategoryDelegate {
-    func didChooseMainCategory(subCategory: SubCategory)
-}
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     var mainCategories : [MainCategory] = [] //Array für MainCategories
     var news : [News] = [] // Array für Neuheiten
-    var choosedMainCategoryDelegate : MainCategoryDelegate!
    
     var appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     var childManagedObjectContext: NSManagedObjectContext?
@@ -54,19 +50,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             MainCategory(entity: mainCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
             mainCategory2.mainCategoryName = "KLEIDUNG"
             mainCategory2.mainCategoryImage = #imageLiteral(resourceName: "mainCategory2").toString()
-            mainCategory2.subCategories = ["ONESIE", "KUSCHELSOCKEN", "PYJAMAS"]
             
             let mainCategory3: MainCategory =
                 MainCategory(entity: mainCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
             mainCategory3.mainCategoryName = "BETTWARE"
             mainCategory3.mainCategoryImage = #imageLiteral(resourceName: "bett-design-drinnen-1329711").toString()
-            mainCategory3.subCategories = ["DECKEN", "KISSEN"]
+            //mainCategory3.subCategories = ["DECKEN", "KISSEN"]
             
             let mainCategory4: MainCategory =
                 MainCategory(entity: mainCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
             mainCategory4.mainCategoryName = "SCHLAFHILFEN"
             mainCategory4.mainCategoryImage = #imageLiteral(resourceName: "mainCategory1").toString()
-            mainCategory3.subCategories = ["TABLETTEN", "CDS", "TEE & KAKAO"]
+            //mainCategory3.subCategories = ["TABLETTEN", "CDS", "TEE & KAKAO"]
             
             let mainCategory5: MainCategory =
                 MainCategory(entity: mainCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
@@ -91,7 +86,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //MARK: Hol die Daten für die MainCategories
     func fetchMainCategory() {
         let fetchRequest: NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MainCategory")
-       // fetchRequest.predicate = NSPredicate(format: "mainCategory.subCategories==false") ist wie eine SELECT Abfrage
         do {
                 if let results = try self.appDelegate.coreDataStack.managedObjectContext.fetch(fetchRequest) as? [NSManagedObject] {
                     let fetchedMainCategories: [MainCategory]? = results as? [MainCategory]
@@ -172,12 +166,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     }
-    
-    
-    
-    
-    
-    
+
     
 }
 
