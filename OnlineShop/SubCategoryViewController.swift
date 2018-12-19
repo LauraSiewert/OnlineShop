@@ -19,6 +19,8 @@ class SubCategoryViewController: UIViewController,UITableViewDelegate, UITableVi
     
     var delegate: SubCategoryDelegate?
     
+    var mainCategory : MainCategory?
+    
     var subCategories: [SubCategory] = [] // Array für SubCategories
     var appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -31,80 +33,23 @@ class SubCategoryViewController: UIViewController,UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        let firstStart: Bool? = UserDefaults.standard.object(forKey: "firstStart") as? Bool
-//
-//        if firstStart == nil {
-//            self.createSubCategories()
-//            UserDefaults.standard.set(false, forKey: "firstStart")
-//        }
-        self.createSubCategories()
-        self.fetchSubCategory()
-        mySubCategoryTableView.separatorStyle = .none
-    }
-    
-    //MARK: Inhalt für Subcategory erstellen
-    func createSubCategories(){
-    let subCategoryEntity: NSEntityDescription? = NSEntityDescription.entity(forEntityName: "SubCategory", in: self.appDelegate.coreDataStack.managedObjectContext)
         
-        if subCategoryEntity != nil {
-            let subCategory1: SubCategory =
-               SubCategory(entity: subCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
-           subCategory1.subCategoryName = "ONESIE"
-           subCategory1.subCategoryImage = #imageLiteral(resourceName: "mainCategory2").toString()
-            subCategory1.mainCategory?.mainCategoryName = "KLEIDUNG"
-            
-            let subCategory2: SubCategory =
-                SubCategory(entity: subCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
-            subCategory2.subCategoryName = "KUSCHELSOCKEN"
-            subCategory2.subCategoryImage = #imageLiteral(resourceName: "mainCategory2").toString()
-            subCategory2.mainCategory?.mainCategoryName = "KLEIDUNG"
-            
-            let subCategory3: SubCategory =
-                SubCategory(entity: subCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
-            subCategory3.subCategoryName = "PYJAMAS"
-            subCategory3.subCategoryImage = #imageLiteral(resourceName: "mainCategory2").toString()
-            subCategory3.mainCategory?.mainCategoryName = "KLEIDUNG"
-            
-            let subCategory4: SubCategory =
-                SubCategory(entity: subCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
-            subCategory4.subCategoryName = "TEE & KAKAO"
-            subCategory4.subCategoryImage = #imageLiteral(resourceName: "mainCategory2").toString()
-            subCategory4.mainCategory?.mainCategoryName = "SCHLAFHILFEN"
-            
-            let subCategory5: SubCategory =
-                SubCategory(entity: subCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
-            subCategory5.subCategoryName = "CDS"
-            subCategory5.subCategoryImage = #imageLiteral(resourceName: "mainCategory2").toString()
-            subCategory5.mainCategory?.mainCategoryName = "SCHLAFHILFEN"
-            
-            
-            let subCategory6: SubCategory =
-                SubCategory(entity: subCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
-            subCategory6.subCategoryName = "TABLETTEN"
-            subCategory6.subCategoryImage = #imageLiteral(resourceName: "mainCategory2").toString()
-            subCategory6.mainCategory?.mainCategoryName = "SCHLAFHILFEN"
-            
-            let subCategory7: SubCategory =
-                SubCategory(entity: subCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
-            subCategory7.subCategoryName = "DECKEN"
-            subCategory7.subCategoryImage = #imageLiteral(resourceName: "mainCategory2").toString()
-            subCategory7.mainCategory?.mainCategoryName = "BETTWARE"
-            
-            let subCategory8: SubCategory =
-                SubCategory(entity: subCategoryEntity!, insertInto: self.appDelegate.coreDataStack.managedObjectContext)
-            subCategory8.subCategoryName = "KISSEN"
-            subCategory8.subCategoryImage = #imageLiteral(resourceName: "mainCategory2").toString()
-            subCategory5.mainCategory?.mainCategoryName = "BETTWARE"
-            
-            self.appDelegate.coreDataStack.saveContext()
-        }
+        //Daten holen
+        self.fetchSubCategory()
+        
+        // Seperator ausstellen
+        mySubCategoryTableView.separatorStyle = .none
+        
+        //TableView neu laden, damit die passenden Daten angezeigt werden
+        self.mySubCategoryTableView.reloadData()
     }
+
     
     //MARK: Hol die Daten für die SubCategories
     func fetchSubCategory() {
+        guard let mainCategory = mainCategory else { return }
         let fetchRequest: NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SubCategory")
-//        fetchRequest.predicate = NSPredicate(format: "mainCategory.mainCategoryName like 'SCHLAFHILFEN' ")
+        fetchRequest.predicate = NSPredicate(format: "mainCategory == %@", mainCategory)
         do {
             if let results = try self.appDelegate.coreDataStack.managedObjectContext.fetch(fetchRequest) as? [NSManagedObject] {
                 let fetchedSubCategories: [SubCategory]? = results as? [SubCategory]
@@ -130,10 +75,8 @@ class SubCategoryViewController: UIViewController,UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         mySubCategoryTableView.rowHeight = 200
         let cell : SubCategoryTableViewCell? = tableView.dequeueReusableCell(withIdentifier: "subCategory", for: indexPath) as? SubCategoryTableViewCell
-        if subCategories[indexPath.row].mainCategory?.mainCategoryName?.uppercased() == navigationItem.title?.uppercased() {
-            let subCategory = subCategories[indexPath.row]
-            cell!.setSubCategory(preview: subCategory)
-        }
+        let subCategory = subCategories[indexPath.row]
+        cell!.setSubCategory(preview: subCategory)
         cell!.selectionStyle = .none
         return cell!
     }
