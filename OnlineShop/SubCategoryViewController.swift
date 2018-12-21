@@ -72,7 +72,7 @@ class SubCategoryViewController: UIViewController,UITableViewDelegate, UITableVi
     }
     
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         mySubCategoryTableView.rowHeight = 200
         let cell : SubCategoryTableViewCell? = tableView.dequeueReusableCell(withIdentifier: "subCategory", for: indexPath) as? SubCategoryTableViewCell
         let subCategory = subCategories[indexPath.row]
@@ -80,5 +80,36 @@ class SubCategoryViewController: UIViewController,UITableViewDelegate, UITableVi
         cell!.selectionStyle = .none
         return cell!
     }
+    
+    //MARK: Was passiert, wenn ich auf eine Unterkategorie klicke
+    var selectedSubCategory : SubCategory?
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedSubCategory = subCategories[indexPath.row]
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Funktion für SubCategoryView
+        if segue.identifier == "toArticels" {
+            let detailVC: ArticelOverviewViewController? = segue.destination as? ArticelOverviewViewController
+            
+            //Übergabe der Daten für den nächsten ViewController
+            let selectedIndex = self.mySubCategoryTableView.indexPathForSelectedRow!.row
+            selectedSubCategory = self.subCategories[selectedIndex]
+            detailVC?.subCategory = selectedSubCategory
+
+            //Navigation Title für nächsten ViewController setzen
+            let cell: UITableViewCell? = sender as? UITableViewCell
+            if cell != nil && detailVC != nil {
+                let indexPath: IndexPath? = self.mySubCategoryTableView.indexPath(for: cell!)
+                if indexPath != nil {
+                    let subCategory: SubCategory = subCategories[indexPath!.row]
+                    detailVC!.navigationItem.title = subCategory.subCategoryName
+                }
+            }
+        }
+    }
+    
+    
 }
 

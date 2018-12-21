@@ -31,6 +31,10 @@
 		D351AADB21C5669000B4A786 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D351AADA21C5669000B4A786 /* NewsTableViewCell.swift */; };
 		D351AADD21C570BD00B4A786 /* SubCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D351AADC21C570BD00B4A786 /* SubCategoryViewController.swift */; };
 		D351AADF21C5739A00B4A786 /* SubCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D351AADE21C5739A00B4A786 /* SubCategoryTableViewCell.swift */; };
+		D39194A921CB85AC001B53C0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39194A821CB85AC001B53C0 /* MapViewController.swift */; };
+		D39194AB21CBE37C001B53C0 /* ArticelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39194AA21CBE37C001B53C0 /* ArticelDetailViewController.swift */; };
+		D39194AD21CBE7AC001B53C0 /* ArticelDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39194AC21CBE7AC001B53C0 /* ArticelDetailTableViewCell.swift */; };
+		D39194AF21CBE7E7001B53C0 /* ArticelImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39194AE21CBE7E7001B53C0 /* ArticelImageTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +64,10 @@
 		D351AADA21C5669000B4A786 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		D351AADC21C570BD00B4A786 /* SubCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryViewController.swift; sourceTree = "<group>"; };
 		D351AADE21C5739A00B4A786 /* SubCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		D39194A821CB85AC001B53C0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		D39194AA21CBE37C001B53C0 /* ArticelDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticelDetailViewController.swift; sourceTree = "<group>"; };
+		D39194AC21CBE7AC001B53C0 /* ArticelDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticelDetailTableViewCell.swift; sourceTree = "<group>"; };
+		D39194AE21CBE7E7001B53C0 /* ArticelImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticelImageTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +125,10 @@
 				D351AADE21C5739A00B4A786 /* SubCategoryTableViewCell.swift */,
 				D30A865C21C6AB1500037326 /* ArticelOverviewViewController.swift */,
 				D30A865E21C6AB4600037326 /* ArticelOverviewCollectionViewCell.swift */,
+				D39194A821CB85AC001B53C0 /* MapViewController.swift */,
+				D39194AA21CBE37C001B53C0 /* ArticelDetailViewController.swift */,
+				D39194AC21CBE7AC001B53C0 /* ArticelDetailTableViewCell.swift */,
+				D39194AE21CBE7E7001B53C0 /* ArticelImageTableViewCell.swift */,
 			);
 			path = OnlineShop;
 			sourceTree = "<group>";
@@ -206,10 +218,14 @@
 				D351AADF21C5739A00B4A786 /* SubCategoryTableViewCell.swift in Sources */,
 				D3439E9D21BAA866007759F5 /* MainCategory+CoreDataClass.swift in Sources */,
 				B61E55D721C26BCA009D2D63 /* ViewControllerSelf.swift in Sources */,
+				D39194A921CB85AC001B53C0 /* MapViewController.swift in Sources */,
 				D3439E8C21BA9834007759F5 /* ShoppingCart+CoreDataClass.swift in Sources */,
 				D336077B21C017AA0032EFA3 /* CoreDataStack.swift in Sources */,
+				D39194AD21CBE7AC001B53C0 /* ArticelDetailTableViewCell.swift in Sources */,
+				D39194AB21CBE37C001B53C0 /* ArticelDetailViewController.swift in Sources */,
 				D3439E8B21BA9834007759F5 /* SubCategory+CoreDataProperties.swift in Sources */,
 				D3439E8821BA9834007759F5 /* Articel+CoreDataClass.swift in Sources */,
+				D39194AF21CBE7E7001B53C0 /* ArticelImageTableViewCell.swift in Sources */,
 				D3439E6C21BA95A0007759F5 /* ViewController.swift in Sources */,
 				D3439E6A21BA95A0007759F5 /* AppDelegate.swift in Sources */,
 				D3439E7D21BA95BB007759F5 /* OnlineShopDataModel.xcdatamodeld in Sources */,

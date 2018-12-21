@@ -38,6 +38,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Um deinen Standort auf der Karte anzuzeigen, benötigen wir die Berechtigung auf deine GPS-Daten</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string></string>

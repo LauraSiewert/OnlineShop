@@ -44,7 +44,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return tempNews
     }
     
-//
+    
     //MARK: Hol die Daten für die MainCategories
     func fetchMainCategory() {
         let fetchRequest: NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MainCategory")
@@ -100,10 +100,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //MARK: Übergabe der Daten an den nächsten ViewController
     private var selectedMainCategory : MainCategory?
+    private var selectedNews : News?
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedMainCategory = mainCategories[indexPath.row-2]
-        performSegue(withIdentifier: "subCategories", sender: self)
+        //selectedNews = news [indexPath.row]
+        //Notiz an Sandra: möchtest du Neuheiten testen kommentiere die erste Zeile aus
+        //möchtest du die Kategorien testen Kommentiere die 2. Zeile aus
     }
 
     
@@ -114,6 +117,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let detailVC: SubCategoryViewController? = segue.destination as? SubCategoryViewController
             
             //Übergabe der Daten für den nächsten ViewController
+            let selectedIndex = self.myTableView.indexPathForSelectedRow!.row - 2
+            
+            selectedMainCategory = self.mainCategories[selectedIndex]
+            
             detailVC?.mainCategory = selectedMainCategory
             
             //Navigation Title für nächsten ViewController setzen
@@ -131,6 +138,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
        // Funktion für NewsView
         if segue.identifier == "news" {
             let detailVC: ArticelOverviewViewController? = segue.destination as? ArticelOverviewViewController
+            
+            //Übergabe der Daten für den nächsten ViewController
+            let selectedIndex = self.myTableView.indexPathForSelectedRow!.row
+            
+            selectedNews = self.news[selectedIndex]
+            
+            
+            detailVC?.news = selectedNews
+            //Navigation Title für nächsten ViewController setzen
             let cell: NewsTableViewCell? = sender as? NewsTableViewCell
 
             if cell != nil && detailVC != nil {
